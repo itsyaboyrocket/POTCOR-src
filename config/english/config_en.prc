@@ -29,9 +29,6 @@ deferred-generate-interval 0.0
 texture-anisotropic-degree 16
 compressed-textures 0
 
-# PlayToken:
-fake-playtoken Skipps
-
 # Developer options:
 want-dev #f
 want-pstats 0

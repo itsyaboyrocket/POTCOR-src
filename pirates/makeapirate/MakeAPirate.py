@@ -1310,30 +1310,19 @@ class MakeAPirate(DirectObject, StateData.StateData, FSM.FSM):
             self.unload()
         
         
-        def sendDone(value = 1):
-            if not self.isNPCEditor or self.wantNPCViewer:
-                messenger.send(self.doneEvent, [
-                    self.pirate.model.currentClothing])
-            
-            base.transitions.fadeIn(1.0)
-
-        
         def populateAv(avId, subId):
             self.avId = avId
-            self.acceptOnce('avatarPopulated', sendDone)
-            if self.nameGui.customName:
-                base.cr.sendWishName(avId, self.pirate.style.name)
-                base.cr.avatarManager.sendRequestPopulateAvatar(avId, self.pirate.style, 0, 0, 0, 0, 0)
-            else:
-                name = self.nameGui.getNumericName()
-                base.cr.avatarManager.sendRequestPopulateAvatar(avId, self.pirate.style, 1, name[0], name[1], name[2], name[3])
+            self.newPotAv = PotentialAvatar.PotentialAvatar(self.avId, self.pirate.style, self.index)
+            messenger.send(self.doneEvent, [])
+            base.transitions.fadeIn(1.0)
 
-        
         def createAv():
-            self.acceptOnce('createdNewAvatar', sendDone)
+            self.acceptOnce('createdNewAvatar', populateAv)
             base.cr.csm.sendCreateAvatar(self.pirate.style, self.index)
 
-        
+        def sendDone():
+            messenger.send('sendDone')
+
         def acknowledgeTempName(value):
             self.confirmTempName.destroy()
             self.confirmTempName = None

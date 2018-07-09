@@ -89,7 +89,7 @@ class OTPClientRepository(ClientRepositoryBase):
         if fakeBlue:
             self.blue = fakeBlue
         
-        self.playToken = None
+        self.playToken = self.launcher.getPlayToken()
         if self.launcher:
             self.playToken = self.launcher.getPlayToken()
         

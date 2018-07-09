@@ -7,9 +7,6 @@ lastClickedNametag = None
 
 class MagicWordManager(DistributedObject.DistributedObject):
     notify = DirectNotifyGlobal.directNotify.newCategory('MagicWordManager')
-    notify.info("Arr matey! We be active!")
-    notify.warning("You risk being banned if you abuse this mate!")
-    notify.warning("I will have Jack cut you into pieces! (a.k.a. banned forever)")
     neverDisable = 1
 
     def generate(self):

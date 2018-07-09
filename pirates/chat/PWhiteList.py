@@ -19,7 +19,8 @@ class PWhiteList(WhiteList):
             searchPath.appendDirectory(Filename('etc'))
             searchPath.appendDirectory(Filename.fromOsSpecific(os.path.expandvars('$PIRATES/src/chat')))
             searchPath.appendDirectory(Filename.fromOsSpecific(os.path.expandvars('pirates/src/chat')))
-            searchPath.appendDirectory(Filename.fromOsSpecific(os.path.expandvars('pirates/chat')))
+            searchPath.appendDirectory(Filename.fromOsSpecific(os.path.expandvars('pirates/chat')))            
+            searchPath.appendDirectory(Filename.expandFrom('resources/phase_3/etc'))
         found = vfs.resolveFilename(filename, searchPath)
         if not found:
             message = 'pwhitelist.txt file not found on %s' % searchPath
