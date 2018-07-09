@@ -1,5 +1,5 @@
 # Window:
-window-title PiratesOnlineRevolution [Pre-Alpha]
+window-title Pirates
 icon-filename phase_3/etc/Pirates_Adds.ico
 win-size 800 600
 
